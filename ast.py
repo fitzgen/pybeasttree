@@ -17,4 +17,8 @@ class Tree(object):
             self.id.add(id)
 
     def depth_first(self):
-        pass
+        if self.children:
+            for child in self.children:
+                for child_id in child.depth_first():
+                    yield child_id
+        yield self.id

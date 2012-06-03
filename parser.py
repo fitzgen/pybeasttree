@@ -64,4 +64,6 @@ if __name__ == "__main__":
     contents = tree_file.read()
     for line in contents.splitlines():
         if line.startswith("tree"):
-            print yacc.parse(line[18:-1], lexer=lexer)
+            tree = yacc.parse(line[18:-1], lexer=lexer)
+            for id in tree.depth_first():
+                print id
