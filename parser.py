@@ -59,11 +59,15 @@ def p_error(t):
 import ply.yacc as yacc
 yacc.yacc()
 
+def parse(s):
+    return yacc.parse(s, lexer=lexer)
+
+
 if __name__ == "__main__":
     tree_file = open(sys.argv[1], "r")
     contents = tree_file.read()
     for line in contents.splitlines():
         if line.startswith("tree"):
-            tree = yacc.parse(line[18:-1], lexer=lexer)
+            tree = parse(line[18:-1])
             for id in tree.depth_first():
                 print id
