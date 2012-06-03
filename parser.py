@@ -65,5 +65,5 @@ if __name__ == "__main__":
     for line in contents.splitlines():
         if line.startswith("tree"):
             tree = yacc.parse(line[18:-1], lexer=lexer)
-            for id in tree.depth_first():
-                print id
+            for node in tree.depth_first():
+                print list(node.id), node.length
