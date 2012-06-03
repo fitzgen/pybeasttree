@@ -21,6 +21,5 @@ class Tree(object):
             for child in self.children:
                 for grand_child in child.depth_first():
                     yield grand_child
-                yield child
 
         yield self
